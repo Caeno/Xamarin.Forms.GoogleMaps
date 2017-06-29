@@ -64,5 +64,17 @@ namespace Xamarin.Forms.GoogleMaps.Logics.Android
                 _nativeMap.AnimateCamera(update, callback);
             }
         }
+
+        public override bool OnMoveToUserLocationRequest()
+        {
+            var location = _nativeMap.MyLocation;
+            if (location != null)
+            {
+                MoveCamera(new CameraUpdate(new Position(location.Latitude, location.Longitude)));
+                return true;
+            }
+
+            return false;
+        }
     }
 }

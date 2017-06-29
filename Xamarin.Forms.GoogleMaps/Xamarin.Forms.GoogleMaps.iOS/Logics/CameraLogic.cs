@@ -109,6 +109,22 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
             CATransaction.Commit();
         }
 
+        public override Boolean OnMoveToUserLocationRequest()
+        {
+            var userLocation = _nativeMap.MyLocation;
+            if (userLocation != null)
+            {
+                MoveToRegion(
+                    MapSpan.FromCenterAndRadius(
+                        new Position(userLocation.Coordinate.Latitude, userLocation.Coordinate.Longitude),
+                        Distance.FromKilometers(1)));
+
+                return true;
+            }
+
+            return false;
+        }
+
         void NativeMap_WillMove (object sender, GMSWillMoveEventArgs e)
         {
             // Skip the first event because Animate method causes first WillMove.

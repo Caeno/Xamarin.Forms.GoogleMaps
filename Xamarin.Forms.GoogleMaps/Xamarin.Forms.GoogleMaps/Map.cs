@@ -80,6 +80,8 @@ namespace Xamarin.Forms.GoogleMaps
 
         internal Action<TakeSnapshotMessage> OnSnapshot{ get; set; }
 
+        internal Func<bool> OnMoveToUserLocation { get; set; }
+
         MapSpan _visibleRegion;
 
         public Map()
@@ -242,6 +244,11 @@ namespace Xamarin.Forms.GoogleMaps
             }
 
             SendMoveToRegion(new MoveToRegionMessage(mapSpan, animate));
+        }
+
+        public bool MoveToUserLocation()
+        {
+           return OnMoveToUserLocation();
         }
 
         public Task<AnimationStatus> MoveCamera(CameraUpdate cameraUpdate)
