@@ -24,6 +24,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
 {
     public class MapRenderer : ViewRenderer,
         GoogleMap.IOnCameraChangeListener,
+        GoogleMap.IOnCameraIdleListener,
         GoogleMap.IOnMapClickListener,
         GoogleMap.IOnMapLongClickListener,
         GoogleMap.IOnMyLocationButtonClickListener
@@ -119,6 +120,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
                 {
 
                     oldGoogleMap.SetOnCameraChangeListener(null);
+                    oldGoogleMap.SetOnCameraIdleListener(null);
                     oldGoogleMap.SetOnMapClickListener(null);
                     oldGoogleMap.SetOnMapLongClickListener(null);
                     oldGoogleMap.SetOnMyLocationButtonClickListener(null);
@@ -159,6 +161,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
             if (map != null)
             {
                 map.SetOnCameraChangeListener(this);
+                map.SetOnCameraIdleListener(this);
                 map.SetOnMapClickListener(this);
                 map.SetOnMapLongClickListener(this);
                 map.SetOnMyLocationButtonClickListener(this);
@@ -445,6 +448,15 @@ namespace Xamarin.Forms.GoogleMaps.Android
             }
 
             base.Dispose(disposing);
+        }
+
+        public void OnCameraIdle()
+        {
+            if (NativeMap == null)
+                return;
+
+            var camera = NativeMap.CameraPosition.ToXamarinForms();
+            Map.SendCameraIdle(camera);
         }
     }
 }

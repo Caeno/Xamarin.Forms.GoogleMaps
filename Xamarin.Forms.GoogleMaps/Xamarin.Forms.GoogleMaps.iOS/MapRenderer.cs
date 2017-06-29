@@ -64,6 +64,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
                 mkMapView.CoordinateLongPressed -= CoordinateLongPressed;
                 mkMapView.CoordinateTapped -= CoordinateTapped;
                 mkMapView.CameraPositionChanged -= CameraPositionChanged;
+                mkMapView.CameraPositionIdle -= CameraPositionIdle;
                 mkMapView.DidTapMyLocationButton = null;
             }
 
@@ -100,6 +101,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
                     oldMapView.CoordinateLongPressed -= CoordinateLongPressed;
                     oldMapView.CoordinateTapped -= CoordinateTapped;
                     oldMapView.CameraPositionChanged -= CameraPositionChanged;
+                    oldMapView.CameraPositionIdle -= CameraPositionIdle;
                     oldMapView.DidTapMyLocationButton = null;
                 }
             }
@@ -115,6 +117,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
                     mkMapView.CameraPositionChanged += CameraPositionChanged;
                     mkMapView.CoordinateTapped += CoordinateTapped;
                     mkMapView.CoordinateLongPressed += CoordinateLongPressed;
+                    mkMapView.CameraPositionIdle += CameraPositionIdle;
                     mkMapView.DidTapMyLocationButton = DidTapMyLocation;
                 }
 
@@ -245,6 +248,11 @@ namespace Xamarin.Forms.GoogleMaps.iOS
             OnCameraPositionChanged(args.Position);
         }
 
+        void CameraPositionIdle(object sender, GMSCameraEventArgs args)
+        {
+            OnCameraPositionIdle(args.Position);
+        }
+
         void OnCameraPositionChanged(GCameraPosition pos)
         {
             if (Element == null)
@@ -263,6 +271,15 @@ namespace Xamarin.Forms.GoogleMaps.iOS
             var camera = pos.ToXamarinForms();
             Map.CameraPosition = camera;
             Map.SendCameraChanged(camera);
+        }
+
+        void OnCameraPositionIdle(GCameraPosition pos)
+        {
+            if (Element == null)
+                return;
+
+            var camera = pos.ToXamarinForms();
+            Map.SendCameraIdle(camera);
         }
 
         void CoordinateTapped(object sender, GMSCoordEventArgs e)
