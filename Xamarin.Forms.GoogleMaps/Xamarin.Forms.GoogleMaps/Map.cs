@@ -41,6 +41,8 @@ namespace Xamarin.Forms.GoogleMaps
 
         public static readonly BindableProperty PaddingProperty = BindableProperty.Create(nameof(PaddingProperty), typeof(Thickness), typeof(Map), default(Thickness));
 
+        public static readonly BindableProperty IsShowInfoWindowProperty = BindableProperty.Create(nameof(IsShowInfoWindow), typeof(bool), typeof(Map), true);
+
         bool _useMoveToRegisonAsInitialBounds = true;
 
         public static readonly BindableProperty CameraPositionProperty = BindableProperty.Create(
@@ -175,6 +177,12 @@ namespace Xamarin.Forms.GoogleMaps
         {
             get { return (MapStyle)GetValue(MapStyleProperty); }
             set { SetValue(MapStyleProperty, value); }
+        }
+
+        public bool IsShowInfoWindow
+        {
+            get { return (bool)GetValue(IsShowInfoWindowProperty); }
+            set { SetValue(IsShowInfoWindowProperty, value); }
         }
 
         public IList<Pin> Pins

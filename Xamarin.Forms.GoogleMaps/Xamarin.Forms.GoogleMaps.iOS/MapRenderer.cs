@@ -136,6 +136,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
                 UpdateIsTrafficEnabled();
                 UpdatePadding();
                 UpdateMapStyle();
+                UpdateIsShowInfoWindow();
 
                 foreach (var logic in _logics)
                 {
@@ -203,6 +204,10 @@ namespace Xamarin.Forms.GoogleMaps.iOS
             else if (e.PropertyName == Map.MapStyleProperty.PropertyName)
             {
                 UpdateMapStyle();
+            }
+            else if (e.PropertyName == Map.IsShowInfoWindowProperty.PropertyName)
+            {
+                UpdateIsShowInfoWindow();
             }
 
             foreach (var logic in _logics)
@@ -362,6 +367,12 @@ namespace Xamarin.Forms.GoogleMaps.iOS
         void UpdatePadding()
         {
             ((MapView)Control).Padding = ((Map)Element).Padding.ToUIEdgeInsets();
+        }
+
+        void UpdateIsShowInfoWindow()
+        {
+            var isShow = ((Map)Element).IsShowInfoWindow;
+            ((MapView)Control).MarkerInfoWindow = new GMSInfoFor((map, marker) => (isShow) ? null : new UIView());
         }
 
         private Google.Maps.MapStyle _mapStyle = null;
