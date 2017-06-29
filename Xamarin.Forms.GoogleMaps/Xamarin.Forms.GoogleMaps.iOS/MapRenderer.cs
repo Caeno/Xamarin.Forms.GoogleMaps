@@ -320,7 +320,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
         void UpdateIsShowingUser()
         {
             ((MapView)Control).MyLocationEnabled = ((Map)Element).IsShowingUser;
-            ((MapView)Control).Settings.MyLocationButton = ((Map)Element).IsShowingUser;
+            //((MapView)Control).Settings.MyLocationButton = ((Map)Element).IsShowingUser;
 
             ((Map)Element).UiSettings.MyLocationButtonEnabled = ((Map)Element).IsShowingUser;
         }
