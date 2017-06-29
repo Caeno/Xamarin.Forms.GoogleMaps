@@ -125,6 +125,11 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
             return false;
         }
 
+        public override void OnAnimateToViewAngle(double a)
+        {
+            _nativeMap.Animate(viewingAngle: a);
+        }
+
         void NativeMap_WillMove (object sender, GMSWillMoveEventArgs e)
         {
             // Skip the first event because Animate method causes first WillMove.

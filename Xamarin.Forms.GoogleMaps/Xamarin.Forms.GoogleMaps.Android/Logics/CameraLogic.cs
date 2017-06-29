@@ -76,5 +76,10 @@ namespace Xamarin.Forms.GoogleMaps.Logics.Android
 
             return false;
         }
+
+        public override void OnAnimateToViewAngle(double a)
+        {
+            // TODO: Implement the logic for Camera Tilt in Android
+        }
     }
 }

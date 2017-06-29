@@ -78,6 +78,8 @@ namespace Xamarin.Forms.GoogleMaps
 
         internal Action<CameraUpdateMessage> OnAnimateCamera { get; set; }
 
+        internal Action<double> OnAnimateToViewAngle { get; set; }
+        
         internal Action<TakeSnapshotMessage> OnSnapshot{ get; set; }
 
         internal Func<bool> OnMoveToUserLocation { get; set; }
@@ -273,6 +275,10 @@ namespace Xamarin.Forms.GoogleMaps
             return comp.Task;
         }
 
+        public void AnimateToViewAngle(double angle)
+        {
+            SendAnimateToViewAngle(angle);
+        }
 
         public Task<Stream> TakeSnapshot()
         {
@@ -397,6 +403,11 @@ namespace Xamarin.Forms.GoogleMaps
         void SendAnimateCamera(CameraUpdateMessage message)
         {
             OnAnimateCamera?.Invoke(message);
+        }
+
+        void SendAnimateToViewAngle(double angle)
+        {
+            OnAnimateToViewAngle?.Invoke(angle);
         }
 
         void SendTakeSnapshot(TakeSnapshotMessage message)

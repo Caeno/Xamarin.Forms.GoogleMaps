@@ -18,6 +18,7 @@ namespace Xamarin.Forms.GoogleMaps.Logics
             _map.OnMoveCamera = OnMoveCameraRequest;
             _map.OnAnimateCamera = OnAnimateCameraRequest;
             _map.OnMoveToUserLocation = OnMoveToUserLocationRequest;
+            _map.OnAnimateToViewAngle = OnAnimateToViewAngle;
         }
 
         public virtual void Unregister()
@@ -28,6 +29,7 @@ namespace Xamarin.Forms.GoogleMaps.Logics
                 _map.OnMoveCamera = null;
                 _map.OnMoveToRegion = null;
                 _map.OnMoveToUserLocation = null;
+                _map.OnAnimateToViewAngle = null;
             }
         }
 
@@ -35,5 +37,6 @@ namespace Xamarin.Forms.GoogleMaps.Logics
         public abstract void OnMoveCameraRequest(CameraUpdateMessage m);
         public abstract void OnAnimateCameraRequest(CameraUpdateMessage m);
         public abstract bool OnMoveToUserLocationRequest();
+        public abstract void OnAnimateToViewAngle(double a);
     }
 }
