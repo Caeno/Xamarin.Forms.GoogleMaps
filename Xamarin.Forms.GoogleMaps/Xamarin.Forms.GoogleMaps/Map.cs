@@ -86,6 +86,8 @@ namespace Xamarin.Forms.GoogleMaps
 
         internal Func<bool> OnMoveToUserLocation { get; set; }
 
+        internal Func<Position, Point> OnPointForPosition { get; set; }
+
         MapSpan _visibleRegion;
 
         public Map()
@@ -259,6 +261,11 @@ namespace Xamarin.Forms.GoogleMaps
         public bool MoveToUserLocation()
         {
            return OnMoveToUserLocation();
+        }
+
+        public Point PointForPosition(Position position)
+        {
+            return OnPointForPosition(position);
         }
 
         public Task<AnimationStatus> MoveCamera(CameraUpdate cameraUpdate)

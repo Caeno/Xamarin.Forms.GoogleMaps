@@ -1,4 +1,5 @@
-﻿using Android.Gms.Maps;
+﻿using System;
+using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Java.Lang;
 using Xamarin.Forms.GoogleMaps.Android.Extensions;
@@ -6,6 +7,7 @@ using Xamarin.Forms.GoogleMaps.Android.Logics;
 using Xamarin.Forms.GoogleMaps.Internals;
 
 using GCameraUpdateFactory = Android.Gms.Maps.CameraUpdateFactory;
+using Xamarin.Forms.GoogleMaps.Android;
 
 namespace Xamarin.Forms.GoogleMaps.Logics.Android
 {
@@ -77,9 +79,16 @@ namespace Xamarin.Forms.GoogleMaps.Logics.Android
             return false;
         }
 
-        public override void OnAnimateToViewAngle(double a)
+        public override void OnAnimateToViewAngleRequest(double a)
         {
             // TODO: Implement the logic for Camera Tilt in Android
         }
+
+        public override Point OnPointForPositionRequest(Position position)
+        {
+            var nativePosition = _nativeMap.Projection.ToScreenLocation(position.ToLatLng());
+            return new Point(nativePosition.X, nativePosition.Y);
+        }
+
     }
 }

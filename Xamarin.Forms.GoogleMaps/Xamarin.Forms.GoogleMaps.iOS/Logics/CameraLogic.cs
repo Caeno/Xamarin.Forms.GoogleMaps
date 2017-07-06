@@ -125,7 +125,7 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
             return false;
         }
 
-        public override void OnAnimateToViewAngle(double a)
+        public override void OnAnimateToViewAngleRequest(double a)
         {
             _nativeMap.Animate(viewingAngle: a);
         }
@@ -144,6 +144,12 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
             {
                 _isCancelAnimate = true;
             }
+        }
+
+        public override Point OnPointForPositionRequest(Position position)
+        {
+            var nativePoint = _nativeMap.Projection.PointForCoordinate(position.ToCoord());
+            return new Point(nativePoint.X, nativePoint.Y);
         }
     }
 }
