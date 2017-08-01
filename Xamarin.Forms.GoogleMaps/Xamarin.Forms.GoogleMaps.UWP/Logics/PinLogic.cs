@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls.Maps;
+using Windows.UI.Xaml.Input;
 using Xamarin.Forms.GoogleMaps.Extensions.UWP;
 using Xamarin.Forms.GoogleMaps.UWP;
 
@@ -34,6 +35,7 @@ namespace Xamarin.Forms.GoogleMaps.Logics.UWP
                 {
                     pin.Tapped -= Pushpin_Tapped;
                     pin.Holding -= Pushpin_Holding;
+                    pin.InfoWindowClicked -= PushpinOnInfoWindowClicked;
                 }
             }
         }
@@ -56,6 +58,7 @@ namespace Xamarin.Forms.GoogleMaps.Logics.UWP
             if (Map.SelectedPin != null)
             {
                 Map.SelectedPin = null;
+                Map.SendSelectedPinChanged(null);
             }
         }
 
@@ -69,6 +72,7 @@ namespace Xamarin.Forms.GoogleMaps.Logics.UWP
             var pushpin = new PushPin(outerItem);
             pushpin.Tapped += Pushpin_Tapped;
             pushpin.Holding += Pushpin_Holding;
+            pushpin.InfoWindowClicked += PushpinOnInfoWindowClicked;
 
             pushpin.Visibility = outerItem?.IsVisible ?? false ?
                 Windows.UI.Xaml.Visibility.Visible :
@@ -76,6 +80,11 @@ namespace Xamarin.Forms.GoogleMaps.Logics.UWP
 
             NativeMap.Children.Add(pushpin);
             return pushpin;
+        }
+
+        private void PushpinOnInfoWindowClicked(object sender, TappedRoutedEventArgs tappedRoutedEventArgs)
+        {
+            Map.SendInfoWindowClicked(((Pin)sender));
         }
 
         private void Pushpin_Holding(object sender, Windows.UI.Xaml.Input.HoldingRoutedEventArgs e)
@@ -108,12 +117,17 @@ namespace Xamarin.Forms.GoogleMaps.Logics.UWP
 
             if (targetPin != null && !ReferenceEquals(targetPin, Map.SelectedPin))
             {
+                if (Map.SelectedPin != null)
+                {
+                    Map.SendSelectedPinChanged(null);
+                }
                 Map.SelectedPin = targetPin;
             }
             else
             {
                 Map.SelectedPin = null;
             }
+            Map.SendSelectedPinChanged(Map.SelectedPin);
         }
 
         Pin LookupPin(PushPin marker)
@@ -132,6 +146,7 @@ namespace Xamarin.Forms.GoogleMaps.Logics.UWP
 
             nativePushpin.Tapped -= Pushpin_Tapped;
             nativePushpin.Holding -= Pushpin_Holding;
+            nativePushpin.InfoWindowClicked -= PushpinOnInfoWindowClicked;
 
             NativeMap.Children.Remove(nativePushpin);
 
