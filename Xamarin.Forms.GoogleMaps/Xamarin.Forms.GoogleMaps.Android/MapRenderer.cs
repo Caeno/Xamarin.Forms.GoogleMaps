@@ -310,7 +310,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
 
         private void UpdateHasScrollEnabled()
         {
-            Map.UiSettings.ScrollGesturesEnabled = Map.HasScrollEnabled;
+            NativeMap.UiSettings.ScrollGesturesEnabled = Map.HasScrollEnabled;
         }
 
         private void UpdateHasZoomEnabled()
@@ -321,7 +321,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
 
         private void UpdateHasRotationEnabled()
         {
-            Map.UiSettings.RotateGesturesEnabled = Map.HasRotationEnabled;
+            NativeMap.UiSettings.RotateGesturesEnabled = Map.HasRotationEnabled;
         }
 
         private void UpdateIsTrafficEnabled()

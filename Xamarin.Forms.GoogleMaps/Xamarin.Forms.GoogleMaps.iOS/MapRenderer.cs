@@ -304,17 +304,17 @@ namespace Xamarin.Forms.GoogleMaps.iOS
 
         void UpdateHasScrollEnabled()
         {
-            Map.UiSettings.ScrollGesturesEnabled = ((Map)Element).HasScrollEnabled;
+            NativeMap.Settings.ScrollGestures = ((Map)Element).HasScrollEnabled;
         }
 
         void UpdateHasZoomEnabled()
         {
-            Map.UiSettings.ZoomGesturesEnabled = ((Map)Element).HasZoomEnabled;
+            NativeMap.Settings.ZoomGestures = ((Map)Element).HasZoomEnabled;
         }
 
         void UpdateHasRotationEnabled()
         {
-            Map.UiSettings.RotateGesturesEnabled = ((Map)Element).HasRotationEnabled;
+            NativeMap.Settings.RotateGestures = ((Map)Element).HasRotationEnabled;
         }
 
         void UpdateIsShowingUser()
