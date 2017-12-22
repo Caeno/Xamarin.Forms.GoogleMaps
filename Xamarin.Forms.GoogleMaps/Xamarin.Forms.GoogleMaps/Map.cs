@@ -53,6 +53,8 @@ namespace Xamarin.Forms.GoogleMaps
 
         public static readonly BindableProperty MapStyleProperty = BindableProperty.Create(nameof(MapStyle), typeof(MapStyle), typeof(Map), null);
 
+        public static readonly BindableProperty IsShowInfoWindowProperty = BindableProperty.Create(nameof(IsShowInfoWindow), typeof(bool), typeof(Map), true);
+
         readonly ObservableCollection<Pin> _pins = new ObservableCollection<Pin>();
         readonly ObservableCollection<Polyline> _polylines = new ObservableCollection<Polyline>();
         readonly ObservableCollection<Polygon> _polygons = new ObservableCollection<Polygon>();
@@ -234,6 +236,12 @@ namespace Xamarin.Forms.GoogleMaps
         }
 
         public UiSettings UiSettings { get; } = new UiSettings();
+
+        public bool IsShowInfoWindow 
+        { 
+            get { return (bool)GetValue(IsShowInfoWindowProperty); } 
+            set { SetValue(IsShowInfoWindowProperty, value); } 
+        } 
 
         IEnumerator IEnumerable.GetEnumerator()
         {
