@@ -16,6 +16,23 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
         private Pin _draggingPin;
         private volatile bool _withoutUpdateNative = false;
 
+        private readonly Action<Pin, Marker> _onMarkerCreating;
+        private readonly Action<Pin, Marker> _onMarkerCreated;
+        private readonly Action<Pin, Marker> _onMarkerDeleting;
+        private readonly Action<Pin, Marker> _onMarkerDeleted;
+
+        public PinLogic(
+            Action<Pin, Marker> onMarkerCreating,
+            Action<Pin, Marker> onMarkerCreated,
+            Action<Pin, Marker> onMarkerDeleting,
+            Action<Pin, Marker> onMarkerDeleted)
+        {
+            _onMarkerCreating = onMarkerCreating;
+            _onMarkerCreated = onMarkerCreated;
+            _onMarkerDeleting = onMarkerDeleting;
+            _onMarkerDeleted = onMarkerDeleted;
+        }
+
         internal override void Register(MapView oldNativeMap, Map oldMap, MapView newNativeMap, Map newMap)
         {
             base.Register(oldNativeMap, oldMap, newNativeMap, newMap);
@@ -59,16 +76,21 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
             nativeMarker.GroundAnchor = new CGPoint(outerItem.Anchor.X, outerItem.Anchor.Y);
             nativeMarker.Flat = outerItem.Flat;
             nativeMarker.ZIndex = outerItem.ZIndex;
+            nativeMarker.Opacity = 1f - outerItem.Transparency;
 
             if (outerItem.Icon != null)
             {
                 nativeMarker.Icon = outerItem.Icon.ToUIImage();
             }
 
+            _onMarkerCreating(outerItem, nativeMarker);
+
             outerItem.NativeObject = nativeMarker;
             nativeMarker.Map = outerItem.IsVisible ? NativeMap : null;
 
             OnUpdateIconView(outerItem, nativeMarker);
+
+            _onMarkerCreated(outerItem, nativeMarker);
 
             return nativeMarker;
         }
@@ -76,10 +98,15 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
         protected override Marker DeleteNativeItem(Pin outerItem)
         {
             var nativeMarker = outerItem.NativeObject as Marker;
+
+            _onMarkerDeleting(outerItem, nativeMarker);
+
             nativeMarker.Map = null;
 
             if (ReferenceEquals(Map.SelectedPin, outerItem))
                 Map.SelectedPin = null;
+
+            _onMarkerDeleted(outerItem, nativeMarker);
 
             return nativeMarker;
         }
@@ -310,6 +337,11 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
         protected override void OnUpdateZIndex(Pin outerItem, Marker nativeItem)
         {
             nativeItem.ZIndex = outerItem.ZIndex;
+        }
+
+        protected override void OnUpdateTransparency(Pin outerItem, Marker nativeItem)
+        {
+            nativeItem.Opacity = 1f - outerItem.Transparency;
         }
     }
 }

@@ -1,4 +1,4 @@
-## ![](logo.png) Xamarin.Forms.GoogleMaps [![Build Status](https://www.bitrise.io/app/57c1455061c4af11.svg?token=AzWRh4pkJvZ30qLQSY9Nqg&branch=master)](https://www.bitrise.io/app/57c1455061c4af11) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Xamarin-Forms-GoogleMaps/public)
+## ![](logo.png) Xamarin.Forms.GoogleMaps [![Build status](https://build.mobile.azure.com/v0.1/apps/99e6fb9e-fe8c-49df-b190-8aa1732a0ad2/branches/master/badge)](https://mobile.azure.com) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Xamarin-Forms-GoogleMaps/public)
 
 [日本語の README はこちら！](README-ja.md)
 
@@ -6,7 +6,13 @@ Yet another maps library for Xamarin.Forms that optimized for Google maps.
 
 Usage is almost the same as [Xamarin.Forms.Maps](https://www.nuget.org/packages/Xamarin.Forms.Maps), Because this is forked from [Xamarin.Forms.Maps - github](https://github.com/xamarin/Xamarin.Forms) 
 
-[<img src="https://dply.me/sjtud9/button/large" alt="Try it on your device via DeployGate">](https://dply.me/sjtud9#install)
+## DEMO Apps
+
+You can try DEMO Apps for Android/iOS that includes all this library features.
+[DEMO Apps source code is here](https://github.com/amay077/Xamarin.Forms.GoogleMaps/tree/master/XFGoogleMapSample).
+
+* [Android DEMO Apps](https://install.mobile.azure.com/users/okuokuoku/apps/xfgooglemapsample/distribution_groups/trial) - Open this link in your Android browser
+* iOS DEMO Apps - Please request in [Gitter](https://gitter.im/Xamarin-Forms-GoogleMaps/public)
 
 ![screenshot](screenshot01.png)
 
@@ -117,6 +123,10 @@ Namespace is ``Xamarin.Forms.GoogleMaps`` instead of ``Xamarin.Forms.Maps``.
 Sample application is here.
 
 * [XFGoogleMapSample](https://github.com/amay077/Xamarin.Forms.GoogleMaps/tree/master/XFGoogleMapSample)
+
+## Releases
+
+See [Releases](https://github.com/amay077/Xamarin.Forms.GoogleMaps/releases) or [RELEASE_NOTES](RELEASE_NOTES.md).
 
 ## Future plans
 
