@@ -113,6 +113,11 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
             CATransaction.Commit();
         }
 
+        public override void OnAnimateToViewAngle(double a) 
+        { 
+            _nativeMap.Animate(viewingAngle: a); 
+        } 
+
         void NativeMap_WillMove (object sender, GMSWillMoveEventArgs e)
         {
             _map.SendCameraMoveStarted(e.Gesture);

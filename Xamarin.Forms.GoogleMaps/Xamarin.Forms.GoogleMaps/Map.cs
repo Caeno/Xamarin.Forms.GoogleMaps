@@ -87,6 +87,8 @@ namespace Xamarin.Forms.GoogleMaps
 
         internal Action<TakeSnapshotMessage> OnSnapshot{ get; set; }
 
+        internal Action<double> OnAnimateToViewAngle { get; set; }
+
         MapSpan _visibleRegion;
 
         public Map()
@@ -287,6 +289,11 @@ namespace Xamarin.Forms.GoogleMaps
             return comp.Task;
         }
 
+        public void AnimateToViewAngle(double angle) 
+        { 
+            SendAnimateToViewAngle(angle); 
+        } 
+
         void PinsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null && e.NewItems.Cast<Pin>().Any(pin => pin.Label == null))
@@ -416,6 +423,11 @@ namespace Xamarin.Forms.GoogleMaps
         void SendTakeSnapshot(TakeSnapshotMessage message)
         {
             OnSnapshot?.Invoke(message);
+        }
+
+        void SendAnimateToViewAngle(double angle) 
+        { 
+            OnAnimateToViewAngle?.Invoke(angle); 
         }
     }
 }
