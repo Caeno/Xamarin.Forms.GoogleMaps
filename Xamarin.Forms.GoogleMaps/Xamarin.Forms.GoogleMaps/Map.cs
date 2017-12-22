@@ -89,6 +89,8 @@ namespace Xamarin.Forms.GoogleMaps
 
         internal Action<double> OnAnimateToViewAngle { get; set; }
 
+        internal Func<bool> OnMoveToUserLocation { get; set; } 
+
         MapSpan _visibleRegion;
 
         public Map()
@@ -292,6 +294,11 @@ namespace Xamarin.Forms.GoogleMaps
         public void AnimateToViewAngle(double angle) 
         { 
             SendAnimateToViewAngle(angle); 
+        }
+
+        public bool MoveToUserLocation() 
+        { 
+           return OnMoveToUserLocation(); 
         } 
 
         void PinsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

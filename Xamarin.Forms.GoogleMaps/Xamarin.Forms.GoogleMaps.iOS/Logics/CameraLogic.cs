@@ -113,7 +113,7 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
             CATransaction.Commit();
         }
 
-        public override void OnAnimateToViewAngle(double a) 
+        public override void OnAnimateToViewAngleRequest(double a) 
         { 
             _nativeMap.Animate(viewingAngle: a); 
         } 
@@ -144,6 +144,22 @@ namespace Xamarin.Forms.GoogleMaps.Logics.iOS
         void NativeMap_CameraPositionIdle(object sender, GMSCameraEventArgs e)
         {
             _map.SendCameraIdled(e.Position.ToXamarinForms());
+        }
+
+        public override Boolean OnMoveToUserLocationRequest() 
+        { 
+            var userLocation = _nativeMap.MyLocation; 
+            if (userLocation != null) 
+            { 
+                MoveToRegion( 
+                    MapSpan.FromCenterAndRadius( 
+                        new Position(userLocation.Coordinate.Latitude, userLocation.Coordinate.Longitude), 
+                        Distance.FromKilometers(1))); 
+ 
+                return true; 
+            } 
+ 
+            return false; 
         }
     }
 }
