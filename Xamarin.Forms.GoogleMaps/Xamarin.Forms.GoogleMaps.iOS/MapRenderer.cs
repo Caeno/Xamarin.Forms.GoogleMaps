@@ -189,6 +189,11 @@ namespace Xamarin.Forms.GoogleMaps.iOS
             else if (e.PropertyName == VisualElement.HeightProperty.PropertyName &&
                      ((Map) Element).InitialCameraUpdate != null)
             {
+                // Added fix: previsouly map were moving to initial camera update
+                var map = (Map)Element;
+                var currentPosition = map.CameraPosition;
+                map.InitialCameraUpdate = CameraUpdateFactory.NewCameraPosition(currentPosition);
+
                 _shouldUpdateRegion = true;
             }
             else if (e.PropertyName == Map.IndoorEnabledProperty.PropertyName)
