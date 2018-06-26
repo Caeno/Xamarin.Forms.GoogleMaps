@@ -1,4 +1,6 @@
-## ![](logo.png) Xamarin.Forms.GoogleMaps [![Build status](https://build.mobile.azure.com/v0.1/apps/99e6fb9e-fe8c-49df-b190-8aa1732a0ad2/branches/master/badge)](https://mobile.azure.com) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Xamarin-Forms-GoogleMaps/public)
+## ![](logo.png) Xamarin.Forms.GoogleMaps 
+
+![](https://img.shields.io/nuget/v/Xamarin.Forms.GoogleMaps.svg) ![](https://img.shields.io/nuget/dt/Xamarin.Forms.GoogleMaps.svg) [![Build status](https://build.appcenter.ms/v0.1/apps/99e6fb9e-fe8c-49df-b190-8aa1732a0ad2/branches/master/badge)](https://appcenter.ms) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Xamarin-Forms-GoogleMaps/public)
 
 [日本語の README はこちら！](README-ja.md)
 
@@ -153,6 +155,14 @@ Please read the [contribution guideline](CONTRIBUTING.md).
 ## Commmunity Chat
 
 You can join to out [gitter room](https://gitter.im/Xamarin-Forms-GoogleMaps/public)!
+
+## Donation
+
+I will continue to work hard with your support!
+
+Donate through [Gumroad](https://gum.co/xfgmdnate).
+
+Your donation will up to my motivation. :sushi:
 
 ## License
 

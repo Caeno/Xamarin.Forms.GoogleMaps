@@ -3,41 +3,37 @@
 	<metadata minClientVersion="2.8.3">
 		<id>Xamarin.Forms.GoogleMaps</id>
 		<title>Xamarin.Forms.GoogleMaps</title>
-		<version>2.3.0-beta6</version>
+		<version>3.0.0-beta3</version>
 		<releaseNotes>
 
-# 2.3.0-beta6
+
+# 3.0.0-beta3
 
 ## Bug Fixes
 
-* #[Android]Fix Polygon, Polyline, Circle, Pin, GroundOverlays does not work
+* #491 [Android/iOS]Causes NotSupportedException when using stream via URL
 
-# 2.3.0-beta5
+# 3.0.0-beta2
 
-## Bug Fixes
+## New Features
 
-* #373 [Android]Improve view initialization and uninitialization
+* PR#483 [Android]Update reference GooglePlayServices.Maps package to 60.1142.1
 
-# 2.3.0-beta4
+# 3.0.0-beta1
 
-## Bug Fixes
+## New Features
 
-* #40 [iOS]Fix bundle xxx@1x.png, xxx@2x.png, xxx@3x.png does not work for marker icon.
+* #355 Support .NET Standard 2.0
+	* Now depends Xamarin.Forms 2.5.1.444934+
+	* [UWP]Now depends Windows 10 Fall Creators Update(build 16299)
 
-# 2.3.0-beta3
+# 2.3.1-beta1
 
-## Bug Fixes
+## New Features
 
-* #431 [iOS]Fix doesn't work with Xamarin.Google.iOS.Maps 2.4.0+
+* #406 [Android]Add UiSettings.MapToolbarEnabled property
 
-# 2.3.0-beta2
-
-## Bug Fixes
-
-* #367 [iOS]Fix MyLocationEnabled doesn't work 
-* #421 [iOS/Android/UWP]Fix InitialCameraUpdate parsing failed
-
-# 2.3.0-beta1
+# 2.3.0
 
 ## New Features
 
@@ -45,6 +41,12 @@
 
 ## Bug Fixes
 
+* #[Android]Fix Polygon, Polyline, Circle, Pin, GroundOverlays does not work
+* #373 [Android]Improve view initialization and uninitialization
+* #40 [iOS]Fix bundle xxx@1x.png, xxx@2x.png, xxx@3x.png does not work for marker icon.
+* #431 [iOS]Fix doesn't work with Xamarin.Google.iOS.Maps 2.4.0+
+* #367 [iOS]Fix MyLocationEnabled doesn't work 
+* #421 [iOS/Android/UWP]Fix InitialCameraUpdate parsing failed
 * #40 [iOS]Fix icon size is bigger than Android when load from bundle or stream
 
 # 2.2.1
@@ -277,7 +279,7 @@
 * Add animate parameter to Map.MoveToRegion method
 		</releaseNotes>
 		<authors>amay077</authors>
-		<copyright>Copyright 2016-2017</copyright>
+		<copyright>Copyright 2016-2018</copyright>
 		<iconUrl>https://raw.githubusercontent.com/amay077/Xamarin.Forms.GoogleMaps/master/logo.png</iconUrl>
     <licenseUrl>https://github.com/amay077/Xamarin.Forms.GoogleMaps/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/amay077/Xamarin.Forms.GoogleMaps</projectUrl>
@@ -287,10 +289,10 @@
 		<tags>xamarin forms maps xamarinforms xamarinformsmaps xamarin.forms.maps xamarinformsgooglemaps xamarin.forms.googlemaps google googlemap</tags>
 	<dependencies>
       <group>
-        <dependency id="Xamarin.Forms" version="2.3.4.247" />
+        <dependency id="Xamarin.Forms" version="2.5.1.444934" />
       </group>
-      <group targetFramework="MonoAndroid70">
-        <dependency id="Xamarin.GooglePlayServices.Maps" version="42.1021.1"/>
+      <group targetFramework="MonoAndroid80">
+        <dependency id="Xamarin.GooglePlayServices.Maps" version="60.1142.1"/>
         <dependency id="Xamarin.Android.Support.v7.AppCompat" version="25.1.0"/>
       </group>
       <group targetFramework="Xamarin.iOS10">
@@ -300,72 +302,19 @@
 	</metadata>
 	<files>
 		<!--Core-->
-		<file src="Xamarin.Forms.GoogleMaps\bin\Release\Xamarin.Forms.GoogleMaps.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid70+MonoTouch10+Xamarin.iOS10+UAP10\Xamarin.Forms.GoogleMaps.dll" />
-		<!--<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.dll" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid70+MonoTouch10+Xamarin.iOS10+UAP10\MapExtensions.Forms.Plugin.Abstractions.dll" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.xml" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid70+MonoTouch10+Xamarin.iOS10+UAP10\MapExtensions.Forms.Plugin.Abstractions.xml" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.pdb" target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid70+MonoTouch10+Xamarin.iOS10+UAP10\MapExtensions.Forms.Plugin.Abstractions.pdb" />-->		
-		
-		<!--dotnet
-		<file src="bin\Release\Xamarin.Forms.GoogleMaps.dll" target="lib\dotnet\Xamarin.Forms.GoogleMaps.dll" />
-		<file src="bin\Release\MapExtensions.Forms.Plugin.xml" target="lib\dotnet\MapExtensions.Forms.Plugin.xml" />
-		<file src="bin\Release\MapExtensions.Forms.Plugin.pdb" target="lib\dotnet\MapExtensions.Forms.Plugin.pdb" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.dll" target="lib\dotnet\MapExtensions.Forms.Plugin.Abstractions.dll" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.xml" target="lib\dotnet\MapExtensions.Forms.Plugin.Abstractions.xml" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.pdb" target="lib\dotnet\MapExtensions.Forms.Plugin.Abstractions.pdb" />
-    -->
+		<file src="Xamarin.Forms.GoogleMaps\bin\Release\netstandard2.0\Xamarin.Forms.GoogleMaps.dll" target="lib\netstandard2.0" />
 
-    <!--Win Phone Silverlight
-		<file src="MapExtensions.Forms.Plugin.WindowsPhone8\bin\Release\Xamarin.Forms.GoogleMaps.dll" target="lib\wp8\Xamarin.Forms.GoogleMaps.dll" />
-		<file src="MapExtensions.Forms.Plugin.WindowsPhone8\bin\Release\MapExtensions.Forms.Plugin.xml" target="lib\wp8\MapExtensions.Forms.Plugin.xml" />
-		<file src="MapExtensions.Forms.Plugin.WindowsPhone8\bin\Release\MapExtensions.Forms.Plugin.pdb" target="lib\wp8\MapExtensions.Forms.Plugin.pdb" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.dll" target="lib\wp8\MapExtensions.Forms.Plugin.Abstractions.dll" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.xml" target="lib\wp8\MapExtensions.Forms.Plugin.Abstractions.xml" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.pdb" target="lib\wp8\MapExtensions.Forms.Plugin.Abstractions.pdb" />
-    -->
-
-    <!--Win Phone 81
-		<file src="MapExtensions.Forms.Plugin.WindowsPhone81\bin\Release\Xamarin.Forms.GoogleMaps.dll" target="lib\wpa81\Xamarin.Forms.GoogleMaps.dll" />
-		<file src="MapExtensions.Forms.Plugin.WindowsPhone81\bin\Release\MapExtensions.Forms.Plugin.xml" target="lib\wpa81\MapExtensions.Forms.Plugin.xml" />
-		<file src="MapExtensions.Forms.Plugin.WindowsPhone81\bin\Release\MapExtensions.Forms.Plugin.pdb" target="lib\wpa81\MapExtensions.Forms.Plugin.pdb" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.dll" target="lib\wpa81\MapExtensions.Forms.Plugin.Abstractions.dll" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.xml" target="lib\wpa81\MapExtensions.Forms.Plugin.Abstractions.xml" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.pdb" target="lib\wpa81\MapExtensions.Forms.Plugin.Abstractions.pdb" />
-    -->
-
-    <!--WinStore
-		<file src="MapExtensions.Forms.Plugin.WindowsStore\bin\Release\Xamarin.Forms.GoogleMaps.dll" target="lib\win8\Xamarin.Forms.GoogleMaps.dll" />
-		<file src="MapExtensions.Forms.Plugin.WindowsStore\bin\Release\MapExtensions.Forms.Plugin.xml" target="lib\win8\MapExtensions.Forms.Plugin.xml" />
-		<file src="MapExtensions.Forms.Plugin.WindowsStore\bin\Release\MapExtensions.Forms.Plugin.pdb" target="lib\win8\MapExtensions.Forms.Plugin.pdb" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.dll" target="lib\win8\MapExtensions.Forms.Plugin.Abstractions.dll" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.xml" target="lib\win8\MapExtensions.Forms.Plugin.Abstractions.xml" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.pdb" target="lib\win8\MapExtensions.Forms.Plugin.Abstractions.pdb" />
-    -->
-
-    <!--Xamarin.Android-->
+    	<!--Xamarin.Android-->
 		<file src="Xamarin.Forms.GoogleMaps.Android\bin\Release\Xamarin.Forms.GoogleMaps.Android.dll" target="lib\MonoAndroid70\Xamarin.Forms.GoogleMaps.Android.dll" />
-		<file src="Xamarin.Forms.GoogleMaps\bin\Release\Xamarin.Forms.GoogleMaps.dll" target="lib\MonoAndroid70\Xamarin.Forms.GoogleMaps.dll" />
-		<!--<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.dll" target="lib\MonoAndroid70\MapExtensions.Forms.Plugin.Abstractions.dll" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.xml" target="lib\MonoAndroid70\MapExtensions.Forms.Plugin.Abstractions.xml" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.pdb" target="lib\MonoAndroid70\MapExtensions.Forms.Plugin.Abstractions.pdb" />-->
+		<file src="Xamarin.Forms.GoogleMaps\bin\Release\netstandard2.0\Xamarin.Forms.GoogleMaps.dll" target="lib\MonoAndroid70\Xamarin.Forms.GoogleMaps.dll" />
 
 		<!--Xamarin.iOS-->
 		<file src="Xamarin.Forms.GoogleMaps.iOS\bin\Release\Xamarin.Forms.GoogleMaps.iOS.dll" target="lib\Xamarin.iOS10\Xamarin.Forms.GoogleMaps.iOS.dll" />
-		<file src="Xamarin.Forms.GoogleMaps\bin\Release\Xamarin.Forms.GoogleMaps.dll" target="lib\Xamarin.iOS10\Xamarin.Forms.GoogleMaps.dll" />
-		<!--<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.dll" target="lib\Xamarin.iOS10\MapExtensions.Forms.Plugin.Abstractions.dll" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.xml" target="lib\Xamarin.iOS10\MapExtensions.Forms.Plugin.Abstractions.xml" />-->
+		<file src="Xamarin.Forms.GoogleMaps\bin\Release\netstandard2.0\Xamarin.Forms.GoogleMaps.dll" target="lib\Xamarin.iOS10\Xamarin.Forms.GoogleMaps.dll" />
 
-    <!--uap-->
+	    <!--uap-->
 		<file src="Xamarin.Forms.GoogleMaps.UWP\bin\Release\Xamarin.Forms.GoogleMaps.UWP.dll" target="lib\UAP10\Xamarin.Forms.GoogleMaps.UWP.dll" />
-		<file src="Xamarin.Forms.GoogleMaps\bin\Release\Xamarin.Forms.GoogleMaps.dll" target="lib\UAP10\Xamarin.Forms.GoogleMaps.dll" />
-		<!--<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.dll" target="lib\UAP10\MapExtensions.Forms.Plugin.Abstractions.dll" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.xml" target="lib\UAP10\MapExtensions.Forms.Plugin.Abstractions.xml" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.pdb" target="lib\UAP10\MapExtensions.Forms.Plugin.Abstractions.pdb" />-->
+		<file src="Xamarin.Forms.GoogleMaps\bin\Release\netstandard2.0\Xamarin.Forms.GoogleMaps.dll" target="lib\UAP10\Xamarin.Forms.GoogleMaps.dll" />
 
-    <!--Xamarin.Mac
-		<file src="MapExtensions.Forms.Plugin.Mac\bin\iPhone\Release\Xamarin.Forms.GoogleMaps.dll" target="lib\Xamarin.Mac20\Xamarin.Forms.GoogleMaps.dll" />
-		<file src="MapExtensions.Forms.Plugin.Mac\bin\iPhone\Release\MapExtensions.Forms.Plugin.xml" target="lib\Xamarin.Mac20\MapExtensions.Forms.Plugin.xml" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.dll" target="lib\Xamarin.Mac20\MapExtensions.Forms.Plugin.Abstractions.dll" />
-		<file src="MapExtensions.Forms.Plugin.Abstractions\bin\Release\MapExtensions.Forms.Plugin.Abstractions.xml" target="lib\Xamarin.Mac20\MapExtensions.Forms.Plugin.Abstractions.xml" />
-        -->
 	</files>
 </package>
