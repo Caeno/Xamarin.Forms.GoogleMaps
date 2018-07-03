@@ -60,7 +60,7 @@ namespace XFGoogleMapSample
             InitializeComponent();
 
             // Switch contols as toggle
-            var switches = new Switch[] { switchPinColor, switchPinBundle, switchPinStream };
+            var switches = new Xamarin.Forms.Switch[] { switchPinColor, switchPinBundle, switchPinStream };
             foreach (var sw in switches)
             {
                 sw.Toggled += (sender, e) =>
@@ -187,6 +187,14 @@ namespace XFGoogleMapSample
                 map.SelectedPin = null;
                 _pinTokyo.ZIndex = _pinTokyo2.ZIndex - 1;
             };
+
+            // MapToolbarEnabled
+            map.UiSettings.MapToolbarEnabled = true;
+            switchMapToolbarEnabled.Toggled += (sender, e) =>
+            {
+                map.UiSettings.MapToolbarEnabled = e.Value;
+            };
+            switchMapToolbarEnabled.IsToggled = map.UiSettings.MapToolbarEnabled;
 
             map.PinDragStart += (_, e) => labelDragStatus.Text = $"DragStart - {PrintPin(e.Pin)}";
             map.PinDragging += (_, e) => labelDragStatus.Text = $"Dragging - {PrintPin(e.Pin)}";
