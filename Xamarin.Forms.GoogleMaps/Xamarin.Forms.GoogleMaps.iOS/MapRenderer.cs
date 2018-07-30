@@ -145,6 +145,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
                 UpdatePadding();
                 UpdateMapStyle();
                 UpdateMyLocationEnabled();
+                UpdateIsShowInfoWindow();
                 _uiSettingsLogic.Initialize();
 
                 foreach (var logic in _logics)
@@ -212,6 +213,10 @@ namespace Xamarin.Forms.GoogleMaps.iOS
             {
                 UpdateMapStyle();
             }
+            else if (e.PropertyName == Map.IsShowInfoWindowProperty.PropertyName)  
+            {  
+                UpdateIsShowInfoWindow();  
+            }  
 
             foreach (var logic in _logics)
             {
@@ -380,6 +385,12 @@ namespace Xamarin.Forms.GoogleMaps.iOS
                 var mapStyle = Google.Maps.MapStyle.FromJson(Map.MapStyle.JsonStyle, null);
                 ((MapView)Control).MapStyle = mapStyle;
             }
+        }
+
+        void UpdateIsShowInfoWindow()  
+        {  
+            var isShow = ((Map)Element).IsShowInfoWindow;  
+            ((MapView)Control).MarkerInfoWindow = new GMSInfoFor((map, marker) => (isShow) ? null : new UIView());  
         }
 
         #region Overridable Members

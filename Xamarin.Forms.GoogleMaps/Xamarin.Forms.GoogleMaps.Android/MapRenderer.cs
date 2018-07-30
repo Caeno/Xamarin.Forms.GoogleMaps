@@ -176,6 +176,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
                 UpdateIndoorEnabled();
                 UpdateMapStyle();
                 UpdateMyLocationEnabled();
+                UpdateIsShowInfoWindow();
                 _uiSettingsLogic.Initialize();
 
                 SetMapType();
@@ -287,6 +288,10 @@ namespace Xamarin.Forms.GoogleMaps.Android
             else if (e.PropertyName == Map.MapStyleProperty.PropertyName)
             {
                 UpdateMapStyle();
+            }
+            else if (e.PropertyName == Map.IsShowInfoWindowProperty.PropertyName)
+            {
+                UpdateIsShowInfoWindow();
             }
 
             foreach (var logic in _logics)
@@ -426,6 +431,12 @@ namespace Xamarin.Forms.GoogleMaps.Android
             );
 #pragma warning restore 618
             Element.Region = projection.VisibleRegion.ToRegion();
+        }
+
+        void UpdateIsShowInfoWindow()  
+        {  
+            //var isShow = ((Map)Element).IsShowInfoWindow;  
+            // Should check Android Implementation of this
         }
 
         #region Overridable Members
