@@ -130,5 +130,15 @@ namespace Xamarin.Forms.GoogleMaps.Logics.Android
         {
             _map.SendCameraIdled(_nativeMap.CameraPosition.ToXamarinForms());
         }
+
+        public override void OnAnimateToViewAngleRequest(double a)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool OnMoveToUserLocationRequest()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

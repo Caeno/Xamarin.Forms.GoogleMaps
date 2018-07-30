@@ -2,15 +2,67 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors>amay077</Authors>
+    <Authors>amay077,ravero</Authors>
     <Product>Xamarin.Forms.GoogleMaps</Product>
     <FileVersion>3.0.0.4</FileVersion>
     <AssemblyVersion>3.0.0.4</AssemblyVersion>
     <Version>3.0.0</Version>
     <Copyright>Copyright © amay077. 2016 - 2018</Copyright>
+    <PackageId>Caeno.Xamarin.Forms.GoogleMaps</PackageId>
+    <Summary>Yet another Maps library for Xamarin.Forms that optimized for Google maps</Summary>
+    <Title>Caeno.Xamarin.Forms.GoogleMaps</Title>
+    <Description>Yet another Maps library for Xamarin.Forms that optimized for Google maps.
+
+This package is a fork of "Xamarin.Forms.GoogleMaps" library from amay077. It's been customized to meet the needs of our projects, to include the following features that is missing from the main project at the current time:
+
+* Added `PointForPosition()` method to retrieve the screen location of a map coordinate.
+* Added `MoveToUserLocation()` method to centralize on the user location.
+* Added `AnimateToViewAngle()` method to allow setting the map tilt.
+* Added `IsShowInfoWindow` property to Marker to allow disabling the Info Window.</Description>
+    <PackageVersion>3.0.0</PackageVersion>
+    <PackageIconUrl>https://raw.githubusercontent.com/amay077/Xamarin.Forms.GoogleMaps/master/logo.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/Caeno/Xamarin.Forms.GoogleMaps/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/caeno/Xamarin.Forms.GoogleMaps</PackageProjectUrl>
+    <PackageReleaseNotes>This package is a fork of "Xamarin.Forms.GoogleMaps" library from amay077. It's been customized to meet the needs of our projects, to include the following features that is missing from the main project at the current time:
+
+* Added `PointForPosition()` method to retrieve the screen location of a map coordinate.
+* Added `MoveToUserLocation()` method to centralize on the user location.
+* Added `AnimateToViewAngle()` method to allow setting the map tilt.
+* Added `IsShowInfoWindow` property to Marker to allow disabling the Info Window.
+
+&gt;This version is synchronized with version 3.0.0 of the main branch.
+
+---
+
+# 3.0.0
+
+## New Features
+
+* #355 Support .NET Standard 2.0
+	* Now depends Xamarin.Forms 3.0.0.482510+
+	* [UWP]Now depends Windows 10 Fall Creators Update(build 16299)
+
+* PR#483 [Android]Update reference GooglePlayServices.Maps package to 60.1142.1
+* #452 [Android]Change MapRenderer.OnMapReady's accesibility from private to protected
+* #487 [Android/iOS]Add Map.Region property what can get correct screen corner latitude/longitude
+* #509 Now depends Xamarin.Forms 3.0.0.482510+
+* #499 Add TileLayer.ZIndex property
+* #497 [Android/iOS]Support Caching BitmapDescriptors(Android) or UIImages(iOS)
+
+## Bug Fixes
+
+* #452 [Android]Fix MapRenderer.OnMapReady accesibility
+* #517 [iOS]iOS 10.0+ native crash when setting a value to the Map.MapStyle property.
+* #491 [Android/iOS]Causes NotSupportedException when using stream via URL
+* #504 [iOS]Fix NullPointerException when Page popped
+
+
+full release notes is here - https://github.com/amay077/Xamarin.Forms.GoogleMaps/blob/master/RELEASE_NOTES.md</PackageReleaseNotes>
+    <PackageTags>xamarin forms maps xamarinforms xamarinformsmaps xamarin.forms.maps xamarinformsgooglemaps xamarin.forms.googlemaps google googlemap</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
   </ItemGroup>
 </Project>
